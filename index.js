@@ -8,15 +8,32 @@ const router = require("./routes/fruitRouter");
 const vegetableRouter = require("./routes/vegetableRouter");
 const userRouter = require("./routes/userRouter");
 const dairyRouter = require("./routes/dairyRouter");
-var cors = require('cors')
+const cors = require('cors')
 
 const app = express();
-app.use(cors());
-app.use(cors({
-    origin: "http://localhost:3000",
+
+const allowedOrigins = [
+    "http://localhost:3001", // for development
+    "https://mini-magic-mart-backend.vercel.app" // for production (replace with actual URL)
+];
+
+// CORS configuration
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("CORS not allowed"));
+        }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
+    credentials: true,
+};
+
+// Use CORS middleware
+app.use(cors(corsOptions));
+
+
 
 connectDB();
 app.use(express.json());
