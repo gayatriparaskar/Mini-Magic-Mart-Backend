@@ -34,8 +34,8 @@ vegetableRouter.post("/createVegetable",Authenticate, upload.single("image"), as
 
 // Route to Serve Uploaded Images
 
-vegetableRouter.get("/getFruits",getVegetable);
-vegetableRouter.put("/updateFruit/:id",updateVegetable);
+vegetableRouter.get("/getVegetabls",getVegetable);
+vegetableRouter.put("/updateVegetable/:id",updateVegetable);
 vegetableRouter.delete("/deleteVegetable",deleteVegetable);
 
 module.exports = vegetableRouter;

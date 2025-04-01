@@ -8,9 +8,10 @@ const router = require("./routes/fruitRouter");
 const vegetableRouter = require("./routes/vegetableRouter");
 const userRouter = require("./routes/userRouter");
 const dairyRouter = require("./routes/dairyRouter");
+var cors = require('cors')
 
 
-
+app.use(cors());
 const app = express();
 connectDB();
 app.use(express.json());
