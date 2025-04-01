@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/",(req,res)=>{
     console.log("Welcome to our Project");
+    res.send("Hello from server");
     
 });
 
