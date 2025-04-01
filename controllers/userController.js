@@ -45,4 +45,12 @@ module.exports.loginAdmin =async (req,res)=>{
     } catch (error) {
         res.status(500).json({message:"Server error",details:error.message});
     }
-}
+};
+module.exports.getAllUsers = async (req,res)=>{
+    try {
+        const getUsers = await UserModel.find();
+        res.status(200).json({message:"USer found",getUsers});
+    } catch (error) {
+        res.status(500).json({message:"User not found",details:error.message})
+    }
+};
